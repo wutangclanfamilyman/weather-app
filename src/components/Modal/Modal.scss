@@ -1,0 +1,82 @@
+.modal {
+    position: fixed;
+    bottom: 120px;
+    right: 120px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    &__current-position {
+        margin: 10px 0;
+        padding-top: 10px;
+        &-btn {
+            display: flex;
+            align-items: center;
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            img {
+                padding-right: 4px;
+            }
+        }
+    }
+    &__header {
+        position: relative;
+        height: 40px;
+        display: flex;
+        align-items: center;
+    }
+    &__field {
+        margin-top: 10px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+    }
+    &__submit {
+        margin-left: 4px;
+        height: 50px;
+        width: 50px;
+    }
+    &__input {
+        width: 240px;
+        height: 50px;
+        background: #E9E7E7;
+        padding: 0 10px;
+        font-size: 18px;
+        border: none;
+    }
+    &__close {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 0px;
+        background: none;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+        span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:after {
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 2px;
+                background-color: #000;
+            }
+            &:nth-child(1) {
+                &:after {
+                    transform: rotate(45deg);
+                }
+            }
+            &:nth-child(2) {
+                &:after {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}

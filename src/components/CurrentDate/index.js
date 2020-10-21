@@ -6,8 +6,7 @@ const CurrentDate = () => {
     const [currentTime, setCurrentTime] = useState({
         day: '',
         hours: '',
-        minutes: '',
-        seconds: ''
+        minutes: ''
     })
 
     useEffect(() => {
@@ -24,13 +23,11 @@ const CurrentDate = () => {
         let day = now.toLocaleDateString('ru-RU', {weekday: 'long'});
         let hours = formatTime(now.getHours());
         let minutes = formatTime(now.getMinutes());
-        let seconds = formatTime(now.getSeconds());
 
         setCurrentTime({
             day,
             hours,
-            minutes,
-            seconds
+            minutes
         })
 
         }, 1000)
@@ -38,7 +35,7 @@ const CurrentDate = () => {
 
     return (
         <div className="current-date">
-            {currentTime.day}, <span>{currentTime.hours}:{currentTime.minutes}:{currentTime.seconds}</span>
+            {currentTime.day}, <span>{currentTime.hours}:{currentTime.minutes}</span>
         </div>
     )
 }

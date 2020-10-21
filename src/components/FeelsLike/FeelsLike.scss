@@ -1,0 +1,14 @@
+.feels-like {
+    margin-top: 10px;
+    display: flex;
+    font-size: 24px;
+    &__degree {
+        border-radius: 50%;
+        border: 1px solid #fff;
+        width: 4px;
+        height: 4px;
+    }
+    &__temp {
+        padding-left: 10px;
+    }
+}
