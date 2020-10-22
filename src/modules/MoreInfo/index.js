@@ -1,17 +1,27 @@
 import React from 'react'
 import {WindDegree, AirPressure, Himidity, WindSpeed} from '../../components'
-
+import PropTypes from 'prop-types'
 import './MoreInfo.scss'
 
-const MoreInfo = () => {
-    return (
+const MoreInfo = (props) => {
+
+    const {wind, airAndHimidity} = props
+
+    console.log(wind, airAndHimidity);
+
+    return (wind || airAndHimidity) ? (
         <div className="more-info">
-            <WindDegree />
-            <WindSpeed />
-            <AirPressure />
-            <Himidity />
+            <WindDegree windDegree={wind.deg} />
+            <WindSpeed windSpeed={wind.speed} />
+            <AirPressure airPressure={airAndHimidity.pressure} />
+            <Himidity himidity={airAndHimidity.humidity} />
         </div>
-    )
+    ) : ''
+}
+
+MoreInfo.propTypes = {
+    wind: PropTypes.object,
+    airAndHimidity: PropTypes.object
 }
 
 export default MoreInfo

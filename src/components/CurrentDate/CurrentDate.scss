@@ -3,7 +3,15 @@
     bottom: 90px;
     left: 100px;
     font-size: 36px;
+    opacity: 0;
+    transition: opacity .4s;
+    transform: translateX(-200%);
     span {
         font-weight: 700;
     }
+}
+
+.current-date--loaded {
+    opacity: 1;
+    transform: translateX(0)
 }

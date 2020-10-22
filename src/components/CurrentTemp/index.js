@@ -1,20 +1,30 @@
 import React from 'react'
-import IconWeather from '../../assets/icon.svg'
+import PropTypes from 'prop-types'
 import './CurrentTemp.scss'
 
-const CurrentTemp = () => {
+const CurrentTemp = (props) => {
+
+    const {temp, icon} = props
+
+    const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`
+
     return (
         <div className="current-temp">
             <div className="current-temp__icon">
-                <img src={IconWeather} />
+                <img src={iconURL} alt={temp} />
             </div>
             <div className="current-temp__values">
-                <span className="current-temp__count">25</span> 
+                <span className="current-temp__count">{Math.round(temp)}</span> 
                 <span className="current-temp__degree"></span>
                 <span className="current-temp__celsius">C</span>
             </div>
         </div> 
     )
+}
+
+CurrentTemp.propTypes = {
+    temp: PropTypes.number,
+    icon: PropTypes.string
 }
 
 export default CurrentTemp

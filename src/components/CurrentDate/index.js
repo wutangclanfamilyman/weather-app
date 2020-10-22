@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import classnames from 'classnames'
 import './CurrentDate.scss'
 
 const CurrentDate = () => {
@@ -34,8 +35,8 @@ const CurrentDate = () => {
     }
 
     return (
-        <div className="current-date">
-            {currentTime.day}, <span>{currentTime.hours}:{currentTime.minutes}</span>
+        <div className={classnames('current-date', {'current-date--loaded': currentTime.day})}>
+            {currentTime.day && `${currentTime.day}, `}<span>{currentTime.hours && `${currentTime.hours}:${currentTime.minutes}`}</span>
         </div>
     )
 }

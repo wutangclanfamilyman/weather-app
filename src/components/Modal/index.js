@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {openModal, closeModal} from '../../redux/actions'
 import PropTypes from 'prop-types'
+import {closeModal} from '../../redux/actions'
 
 import EditIcon from '../../assets/edit.svg'
 import PlaceIcon from '../../assets/place.svg'
@@ -9,9 +9,9 @@ import './Modal.scss'
 
 const Modal = (props) => {
 
-    const {showModal, closeModal} = props
+    const {show, closeModal} = props
 
-    return showModal ? (
+    return show ? (
         <div className="modal">
             <div className="modal__header">
                 <button className="modal__close" onClick={() => closeModal()}>
@@ -37,9 +37,9 @@ const Modal = (props) => {
     ) : ''
 }
 
-const mapStateToProps = ({showModal}) => {
+const mapStateToProps = (state) => {
     return {
-        showModal
+        show: state.modal.showModal
     }
 }
 
@@ -48,7 +48,7 @@ const mapDispatchToProps = {
 }
 
 Modal.propTypes = {
-    showModal: PropTypes.bool,
+    show: PropTypes.bool,
     closeModal: PropTypes.func
 }
 

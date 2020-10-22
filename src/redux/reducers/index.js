@@ -1,25 +1,9 @@
-const initialStore = {
-    currentPosition: 'Kiev',
-    showModal: false
-}
+import {combineReducers} from 'redux'
 
-const reducers = (state = initialStore, action) => {
-    switch(action.type) {
-        case 'MODAL:OPEN':
-            return {
-                ...state,
-                showModal: true
-            };
-        case 'MODAL:CLOSE':
-            return {
-                ...state,
-                showModal: false
-            };
-        default:
-            return {
-                ...state
-            }
-    }
-}
+import modal from './modal'
+import weather from './weather'
 
-export default reducers
+export default combineReducers({
+    modal,
+    weather
+})

@@ -1,13 +1,23 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import './CurrentCity.scss'
 
-const CurrentCity = () => {
+const CurrentCity = (props) => {
+
+    const {city, country} = props
+
+    console.log(city, country);
+
     return (
         <div className="current-city">
-            Kiev,<span>UA</span>
+            {city},<span>{country}</span>
         </div>
     )
+}
+
+CurrentCity.propTypes = {
+    city: PropTypes.string,
+    country: PropTypes.string
 }
 
 export default CurrentCity
