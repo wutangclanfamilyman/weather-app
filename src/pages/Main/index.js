@@ -1,26 +1,21 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import PropTypes, { func } from 'prop-types'
-import WeatherApi from '../../api'
+import PropTypes from 'prop-types'
 import { CurrentDate, Modal, OpenModalBtn } from '../../components'
 import { MainInfo, MoreInfo } from '../../modules'
 
-import {weatherRequest, weatherSetItems, weatherError} from '../../redux/actions'
+import {weatherRequest, fetchWeatherDataCurrentPosition} from '../../redux/actions'
 
 import './Main.scss'
 
 const MainPage = (props) => {
     
-    const weatherApi = new WeatherApi() 
-
-    const {city, weatherData, weatherSetItems} = props
+    const {setCity, weatherData, fetchWeatherDataCurrentPosition} = props
 
     useEffect(() => {
-        weatherApi.getWeatherData(city)
-            .then(data => weatherSetItems(data))
-            .catch(err => console.error(err))
+        fetchWeatherDataCurrentPosition(setCity)
     }, [])
-    
+
     return weatherData ? (
         <div className="page">
             <MainInfo weather={weatherData.weather} temp={weatherData.main} city={weatherData.name} country={weatherData.sys} />
@@ -29,24 +24,24 @@ const MainPage = (props) => {
             <Modal />
             <OpenModalBtn />
         </div>
-    ) : <div className="lds-circle"><div></div></div>
+    ) : <div className="page"><div className="lds-circle"><div></div></div></div>
 }
 
 MainPage.propTypes = {
-    city: PropTypes.string,
+    setCity: PropTypes.string,
     weatherData: PropTypes.object,
-    weatherSetItems: PropTypes.func
+    fetchWeatherDataCurrentPosition: PropTypes.func
 }
 
 const MapStateToProps = (state) => {
     return {
-        city: state.weather.setCity,
+        setCity: state.weather.setCity,
         weatherData: state.weather.weather
     }
 }
 
 const MapDispatchToProps = {
-    weatherSetItems
+    fetchWeatherDataCurrentPosition
 }
 
 export default connect(MapStateToProps, MapDispatchToProps)(MainPage)

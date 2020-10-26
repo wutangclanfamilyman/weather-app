@@ -7,8 +7,6 @@ const MoreInfo = (props) => {
 
     const {wind, airAndHimidity} = props
 
-    console.log(wind, airAndHimidity);
-
     return (wind || airAndHimidity) ? (
         <div className="more-info">
             <WindDegree windDegree={wind.deg} />

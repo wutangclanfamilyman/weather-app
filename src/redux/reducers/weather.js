@@ -2,11 +2,17 @@ const initialState = {
     setCity: 'Kiev',
     loading: false,
     error: false,
-    weather: {}
+    weather: {},
+    init: false
 }
 
 const weatherReducer = (state = initialState, action) => {
     switch(action.type) {
+        case 'WEATHER:SET_CITY':
+            return {
+                ...state,
+                setCity: action.payload
+            };
         case 'WEATHER:REQUEST':
             return {
                 ...state,
@@ -16,7 +22,8 @@ const weatherReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                weather: action.payload
+                weather: action.payload,
+                init: true
             };
         case 'WEATHER:ERROR':
             return {

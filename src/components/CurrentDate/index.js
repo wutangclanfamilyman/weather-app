@@ -21,7 +21,7 @@ const CurrentDate = () => {
     function calcDateTime() { setInterval(() => {
         const now = new Date();
 
-        let day = now.toLocaleDateString('ru-RU', {weekday: 'long'});
+        let day = now.toLocaleDateString('en-EN', {weekday: 'long'});
         let hours = formatTime(now.getHours());
         let minutes = formatTime(now.getMinutes());
 

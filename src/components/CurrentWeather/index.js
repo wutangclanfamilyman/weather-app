@@ -7,8 +7,6 @@ const CurrentWeather = (props) => {
 
     const {weather} = props
 
-    console.log(weather);
-
     return (
         <div className="current-weather">{weather}</div>
     )

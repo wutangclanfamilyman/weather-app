@@ -6,8 +6,6 @@ const CurrentCity = (props) => {
 
     const {city, country} = props
 
-    console.log(city, country);
-
     return (
         <div className="current-city">
             {city},<span>{country}</span>
